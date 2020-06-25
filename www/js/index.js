@@ -43,6 +43,12 @@ var app = {
         this.id = id;
 
         this.setup();
+
+        // bind buttons events
+        document.getElementById('startOutgoingCall').addEventListener('click', app.startOutgoingCall.bind(app), false)
+        document.getElementById('connectOutgoingCall').addEventListener('click', app.connectOutgoingCall.bind(app), false)
+        document.getElementById('endCall').addEventListener('click', app.endCall.bind(app), false)
+        document.getElementById('handleIncomingCall').addEventListener('click', app.handleIncomingCall.bind(app), false)
     },
 
     log: function(method, data, hasError) {
