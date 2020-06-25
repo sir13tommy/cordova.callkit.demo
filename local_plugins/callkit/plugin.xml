@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.chanty.call-kit"
+        version="0.1.0">
+  <name>CallKitPlugin</name>
+  <description>CallKitPlugin</description>
+  <license>MIT</license>
+
+  <!--  js -->
+  <js-module src="www/callKitPlugin.js" name="CallKitPlugin">
+      <clobbers target="window.CallKitPlugin"/>
+  </js-module>
+  
+  <!-- iOS -->
+  <platform name="ios">
+     
+     <config-file target="config.xml" parent="/*">
+         <feature name="CallKitPlugin">
+             <param name="ios-package" value="CallKitPlugin" />
+             <param name="onload" value="true" />
+         </feature>
+     </config-file>
+
+     <config-file target="*-Info.plist" parent="UIBackgroundModes">
+         <array>
+             <string>audio</string>
+             <string>voip</string>
+         </array>
+     </config-file>
+
+     <source-file src="src/ios/CallKitPlugin.swift"/>
+     <source-file src="src/ios/CallsHandler.swift"/>
+     <framework src="CallKit.framework" />
+   </platform>
+  
+</plugin>

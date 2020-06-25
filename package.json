@@ -13,6 +13,7 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "dependencies": {
+    "com.chanty.call-kit": "file:local_plugins/callkit",
     "cordova-ios": "^5.1.1"
   },
   "devDependencies": {
@@ -20,7 +21,8 @@
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "com.chanty.call-kit": {}
     },
     "platforms": [
       "ios"

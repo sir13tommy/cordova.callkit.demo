@@ -40,7 +40,76 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        this.id = id;
+
+        this.setup();
+    },
+
+    log: function(method, data, hasError) {
+        let logStr = 'Callkit.' + method + ': ' + data;
+        if (hasError) {
+            console.log('Error ' + logStr);
+        } else {
+            console.log(logStr);
+        }
+    },
+
+    setup: function() {
+        this.log('setup', 'run')
+        CallKitPlugin.setup({
+            appName: 'Chanty',
+            supportsVideo: false
+        }, (result) => {
+            this.log('setup', result);
+        });
+    },
+
+    startOutgoingCall: function() {
+        this.log('startOutgoingCall', 'run');
+        CallKitPlugin.startOutgoingCall({
+            title: 'Call fucking fagots'
+        }, (result) => {
+            this.log('startOutgoingCall', result);
+        }, (error) => {
+            this.log('startOutgoingCall', error, true);
+        });
+    },
+
+    connectOutgoingCall: function() {
+        this.log('connectOutgoingCall', 'run');
+        CallKitPlugin.connectOutgoingCall({
+            uuid: this.id
+        }, (result) => {
+            this.log('connectOutgoingCall', result)
+        });
+    },
+
+    endCall: function() {
+        this.log('endCall', 'run');
+        CallKitPlugin.endCall({
+            uuid: this.id
+        }, (result) => {
+            this.log('endCall', result);
+        }, (error) => {
+            this.log('endCall', error, true);
+        });
+    },
+    
+    handleIncomingCall: function() {
+        this.log('handleIncomingCall', 'run')
+        CallKitPlugin.handleIncomingCall({
+            title: 'Call from fucking fagots',
+            hasVideo: false
+        }, (result) => {
+            this.log('handleIncomingCall', result)
+        }, (error) => {
+            this.log('handleIncomingCall', error, true);
+        });
     }
 };
 
 app.initialize();
+
+function startOutgoingCall() {
+    app.startOutgoingCall();
+}

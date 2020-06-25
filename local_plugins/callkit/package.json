@@ -1,0 +1,14 @@
+{
+    "version": "0.1.0",
+    "name": "com.chanty.call-kit",
+    "cordova_name": "CallKitPlugin",
+    "description": "CallKitPlugin",
+    "license": "MIT",
+    "keywords": [
+    ],
+    "platforms": [
+        "android",
+        "ios"
+    ],
+    "engines": []
+}
